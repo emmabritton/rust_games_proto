@@ -29,7 +29,7 @@ pub const COMPUTER_MOVE_PIECE: Color = Color {
 pub(super) fn render(
     ctx: &mut Context,
     mesh_helper: &mut MeshHelper,
-    state: &mut State,
+    state: &State,
 ) -> GameResult<()> {
     let board_size = mesh_helper.calc_height(0.9);
     let cell_size = board_size / (state.board_calc.rows as f32);

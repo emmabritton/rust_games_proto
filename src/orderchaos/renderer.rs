@@ -13,7 +13,7 @@ use ggez::{Context, GameResult};
 pub(super) fn render(
     ctx: &mut Context,
     mesh_helper: &mut MeshHelper,
-    state: &mut State,
+    state: &State,
 ) -> GameResult<()> {
     if state.play_state == PlayState::ModeSelection {
         render_mode_selection(ctx, mesh_helper, state)
@@ -33,7 +33,7 @@ pub(super) fn square_to_color(square: &Square) -> Color {
 pub(super) fn render_game(
     ctx: &mut Context,
     mesh_helper: &mut MeshHelper,
-    state: &mut State,
+    state: &State,
 ) -> GameResult<()> {
     let cell_size = mesh_helper.calc_height(0.13);
     let board_start = pt(
