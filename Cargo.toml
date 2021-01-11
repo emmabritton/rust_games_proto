@@ -1,0 +1,27 @@
+[package]
+name = "games"
+version = "0.0.1"
+description = "Collection of tactical/strategic board games, created as a proof of concept not a releasable product"
+authors = ["Ray Britton <raybritton@pm.me>"]
+edition = "2018"
+license = "MIT"
+publish = false
+readme = "README.md"
+homepage = "https://github.com/raybritton/rust_games"
+repository = "https://github.com/raybritton/rust_games"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+
+[dependencies]
+ggez = "0.5.1"
+clap = { version = "2.33.3", features = ["yaml"] }
+lazy_static = "1.4.0"
+rand = "0.7.3"
+regex = "1"
+variantly = "0.1.0"
+itertools = "0.10.0"
+
+[dev-dependencies]
+serial_test = "*"

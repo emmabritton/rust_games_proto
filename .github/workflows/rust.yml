@@ -1,0 +1,122 @@
+name: Rust
+
+on:
+  push:
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+
+  rustfmt:
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get nightly Rust toolchain with rustfmt
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+          override: true
+          components: rustfmt
+
+      - name: Run cargo fmt --all -- --check
+        run: cargo fmt --all -- --check
+
+  clippy:
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get stable Rust toolchain with clippy
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+          components: clippy
+
+      - name: Install linux libs
+        run: sudo apt-get update; sudo apt-get install --no-install-recommends libasound2-dev libudev-dev pkg-config build-essential
+
+      - name: Run cargo clippy --all-targets -- -D clippy::all
+        run: cargo clippy --all-targets -- -D clippy::all -A clippy::ptr_arg
+
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get stable Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Install linux libs
+        run: sudo apt-get update; sudo apt-get install --no-install-recommends libasound2-dev libudev-dev pkg-config build-essential
+
+      - name: Run cargo check
+        run: cargo test
+
+  build_and_release:
+    if: startsWith(github.ref, 'refs/heads/release_')
+    name: Build and Release
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - x86_64-apple-darwin
+          - x86_64-pc-windows-msvc
+        include:
+          - target: x86_64-apple-darwin
+            os: macOS-latest
+            name: games-x86_64-apple-darwin.tar.gz
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+            name: games-x86_64-pc-windows-msvc.zip
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run cargo check --all-targets
+        run: cargo check --all-targets
+
+      - uses: actions-rs/cargo@v1
+        with:
+          use-cross: true
+          command: build
+          args: --release --target=${{ matrix.target }}
+
+      - name: Prepare build artifacts [Windows]
+        if: matrix.os == 'windows-latest'
+        run: |
+          cd target/${{ matrix.target }}/release
+          strip games.exe
+          7z a ../../../${{ matrix.name }} games.exe
+          cd -
+      - name: Prepare build artifacts [-nix]
+        if: matrix.os != 'windows-latest'
+        run: |
+          cd target/${{ matrix.target }}/release
+          strip games
+          tar cvf ../../../${{ matrix.name }} games
+          cd -
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ matrix.name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
