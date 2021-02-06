@@ -49,7 +49,7 @@ pub(super) fn render(
         mesh_helper.width - board_size - mesh_helper.calc_height(0.05),
         mesh_helper.calc_height(0.05),
     );
-    let numbering_start = board_start.offset(-24., board_size + cell_size * 0.45);
+    let numbering_start = board_start.offset(-20., board_size + cell_size * 0.45);
     let lettering_start = board_start.offset(-cell_size * 0.5, board_size + 8.);
 
     let piece = mesh_helper.make_circle(ctx, cell_size, cell_size * 0.4, DrawMode::fill())?;
@@ -64,7 +64,7 @@ pub(super) fn render(
             &format!("{}", i),
             numbering_start.offsety(-(i as f32 * cell_size)),
             20.,
-            false,
+            true,
         );
         mesh_helper.draw_white_text(
             ctx,
