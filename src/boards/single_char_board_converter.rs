@@ -110,10 +110,7 @@ mod test {
         ];
 
         for coord in coords {
-            assert!(
-                CONVERTER_8.is_valid_coord(coord.0, coord.1),
-                format!("{:?}", coord)
-            );
+            assert!(CONVERTER_8.is_valid_coord(coord.0, coord.1), "{:?}", coord);
         }
     }
 
@@ -131,10 +128,7 @@ mod test {
         ];
 
         for coord in coords {
-            assert!(
-                !CONVERTER_8.is_valid_coord(coord.0, coord.1),
-                format!("{:?}", coord)
-            );
+            assert!(!CONVERTER_8.is_valid_coord(coord.0, coord.1), "{:?}", coord);
         }
     }
 
@@ -195,10 +189,7 @@ mod test {
         ];
 
         for coord in coords {
-            assert!(
-                CONVERTER_4.is_valid_coord(coord.0, coord.1),
-                format!("{:?}", coord)
-            );
+            assert!(CONVERTER_4.is_valid_coord(coord.0, coord.1), "{:?}", coord);
         }
     }
 
@@ -216,10 +207,7 @@ mod test {
         ];
 
         for coord in coords {
-            assert!(
-                !CONVERTER_4.is_valid_coord(coord.0, coord.1),
-                format!("{:?}", coord)
-            );
+            assert!(!CONVERTER_4.is_valid_coord(coord.0, coord.1), "{:?}", coord);
         }
     }
 
@@ -273,10 +261,7 @@ mod test {
         ];
 
         for coord in coords {
-            assert!(
-                CONVERTER_35.is_valid_coord(coord.0, coord.1),
-                format!("{:?}", coord)
-            );
+            assert!(CONVERTER_35.is_valid_coord(coord.0, coord.1), "{:?}", coord);
         }
     }
 
@@ -296,7 +281,8 @@ mod test {
         for coord in coords {
             assert!(
                 !CONVERTER_35.is_valid_coord(coord.0, coord.1),
-                format!("{:?}", coord)
+                "{:?}",
+                coord
             );
         }
     }
