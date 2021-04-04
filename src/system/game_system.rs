@@ -13,11 +13,6 @@ use ggez::input::keyboard::KeyMods;
 use ggez::{graphics, timer, Context, GameResult};
 use std::collections::HashMap;
 
-#[cfg(target_os = "macos")]
-const MODIFIER: KeyMods = KeyMods::LOGO;
-#[cfg(not(target_os = "macos"))]
-const MODIFIER: KeyMods = KeyMods::CTRL;
-
 pub struct GameSystem {
     mesh_helper: MeshHelper,
     active: Box<dyn Scene>,
@@ -195,16 +190,18 @@ impl EventHandler for GameSystem {
 
     fn key_up_event(&mut self, ctx: &mut Context, keycode: KeyCode, keymods: KeyMods) {
         if !self.active.play_state().supports_input() || !self.active.on_key_up(keycode) {
-            match keycode {
-                KeyCode::Escape => ggez::event::quit(ctx),
-                KeyCode::R => {
-                    if keymods == MODIFIER {
-                        if let Some(active_game) = self.active_name.clone() {
-                            self.start_game(&active_game);
-                        }
+            match (keycode, keymods) {
+                (KeyCode::W, KeyMods::LOGO)
+                | (KeyCode::F4, KeyMods::ALT)
+                | (KeyCode::C, KeyMods::CTRL)
+                | (KeyCode::Q, KeyMods::LOGO)
+                | (KeyCode::Escape, KeyMods::NONE) => ggez::event::quit(ctx),
+                (KeyCode::R, KeyMods::LOGO) | (KeyCode::R, KeyMods::CTRL) => {
+                    if let Some(active_game) = self.active_name.clone() {
+                        self.start_game(&active_game);
                     }
                 }
-                _ => {}
+                (_, _) => {}
             }
         }
     }

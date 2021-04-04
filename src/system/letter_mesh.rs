@@ -40,6 +40,8 @@ fn letter_mesh_x(builder: &mut MeshBuilder, width: f32, height: f32) -> GameResu
     Ok(())
 }
 
+//all other methods are (MeshBuilder, f32, f32) -> GameResult so this should be as well for compatibility
+#[allow(clippy::unnecessary_wraps)]
 fn letter_mesh_o(builder: &mut MeshBuilder, width: f32, height: f32) -> GameResult<()> {
     let radius = (height * 0.5) - (height * PADDING);
 
