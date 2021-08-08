@@ -91,8 +91,8 @@ impl Board {
             &Square::new(Player::Computer, Hole::End),
             self.computer.home_total(),
         );
-        self.human.fill_holes(0);
-        self.computer.fill_holes(0);
+        self.human.fill_homes(0);
+        self.computer.fill_homes(0);
     }
 
     pub(super) fn set_count(&mut self, square: &Square, amount: usize) {
@@ -165,7 +165,7 @@ impl SubBoard {
         self.homes.iter().sum::<usize>()
     }
 
-    pub(super) fn fill_holes(&mut self, num: usize) {
+    pub(super) fn fill_homes(&mut self, num: usize) {
         self.homes.iter_mut().for_each(|home| *home = num)
     }
 }
@@ -181,7 +181,7 @@ mod test {
             homes: [0, 0, 0, 0, 0, 0],
         };
 
-        subboard.fill_holes(2);
+        subboard.fill_homes(2);
 
         assert_eq!(subboard.homes[0], 2);
         assert_eq!(subboard.homes[1], 2);
