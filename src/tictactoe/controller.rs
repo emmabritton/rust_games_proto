@@ -96,14 +96,14 @@ fn check_full(board: &Board) -> bool {
 }
 
 fn check_board(board: &Board, piece: Square) -> bool {
-    check_all_horz(&board, 0, piece)
-        || check_all_horz(&board, 3, piece)
-        || check_all_horz(&board, 6, piece)
-        || check_all_vert(&board, 0, piece)
-        || check_all_vert(&board, 1, piece)
-        || check_all_vert(&board, 2, piece)
-        || check_all(&board, 0, 4, 8, piece)
-        || check_all(&board, 6, 4, 2, piece)
+    check_all_horz(board, 0, piece)
+        || check_all_horz(board, 3, piece)
+        || check_all_horz(board, 6, piece)
+        || check_all_vert(board, 0, piece)
+        || check_all_vert(board, 1, piece)
+        || check_all_vert(board, 2, piece)
+        || check_all(board, 0, 4, 8, piece)
+        || check_all(board, 6, 4, 2, piece)
 }
 
 fn check_all(board: &Board, s1: usize, s2: usize, s3: usize, piece: Square) -> bool {
