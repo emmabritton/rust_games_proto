@@ -184,7 +184,7 @@ impl Scene for Controller {
     }
 
     fn render(&mut self, ctx: &mut Context, mesh_helper: &mut MeshHelper) -> GameResult<()> {
-        render(ctx, mesh_helper, &mut self.state)
+        render(ctx, mesh_helper, &self.state)
     }
 
     fn play_state(&self) -> PlayState {

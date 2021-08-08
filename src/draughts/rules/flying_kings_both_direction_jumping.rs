@@ -129,7 +129,7 @@ impl RuleSet for FlyingKingsBothDirectionJumping {
         })
     }
 
-    fn check_game_over(&self, board: &Board, move_history: &Vec<PastMove>) -> Option<PlayState> {
+    fn check_game_over(&self, board: &Board, move_history: &[PastMove]) -> Option<PlayState> {
         let human_king_count = common::get_king_count(board, Human);
         let human_man_count = common::get_man_count(board, Human);
         let computer_king_count = common::get_king_count(board, Computer);

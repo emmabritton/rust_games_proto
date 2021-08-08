@@ -79,14 +79,7 @@ fn render(ctx: &mut Context, mesh_helper: &mut MeshHelper, state: &State) -> Gam
     );
 
     ITEMS.iter().enumerate().for_each(|(idx, item)| {
-        mesh_helper.draw_text(
-            ctx,
-            &item.1,
-            menu_start.offsety(idx * 16),
-            WHITE,
-            14.,
-            false,
-        );
+        mesh_helper.draw_text(ctx, item.1, menu_start.offsety(idx * 16), WHITE, 14., false);
     });
 
     Ok(())

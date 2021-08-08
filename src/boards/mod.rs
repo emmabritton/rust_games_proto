@@ -2,7 +2,6 @@ pub mod chessboard;
 pub mod cursor;
 pub mod idx_coord;
 pub mod is_in_board;
-pub mod noop_board;
 pub mod single_char_board_converter;
 
 use std::sync::atomic::{AtomicUsize, Ordering};
