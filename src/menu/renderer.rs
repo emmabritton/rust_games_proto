@@ -34,7 +34,7 @@ pub(super) fn render(
 
             mesh_helper.draw_white_text(
                 ctx,
-                &ITEMS[state.cursor.value].0.desc,
+                ITEMS[state.cursor.value].0.desc,
                 desc_start,
                 20.,
                 false,
@@ -84,14 +84,7 @@ pub(super) fn render(
 
 fn draw_menu_text(ctx: &mut Context, mesh_helper: &mut MeshHelper, start: Point, color: Color) {
     ITEMS.iter().enumerate().for_each(|(idx, item)| {
-        mesh_helper.draw_text(
-            ctx,
-            &item.0.name,
-            start.offsety(idx * 24),
-            color,
-            24.,
-            false,
-        );
+        mesh_helper.draw_text(ctx, item.0.name, start.offsety(idx * 24), color, 24., false);
     });
 }
 
@@ -109,6 +102,6 @@ fn draw_submenu_text(
         .iter()
         .enumerate()
         .for_each(|(idx, item)| {
-            mesh_helper.draw_text(ctx, &item.name, start.offsety(idx * 22), color, 22., false);
+            mesh_helper.draw_text(ctx, item.name, start.offsety(idx * 22), color, 22., false);
         });
 }

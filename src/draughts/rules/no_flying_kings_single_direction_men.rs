@@ -110,7 +110,7 @@ impl RuleSet for NoFlyingKingsSingleDirectionMen {
         })
     }
 
-    fn check_game_over(&self, board: &Board, move_history: &Vec<PastMove>) -> Option<PlayState> {
+    fn check_game_over(&self, board: &Board, move_history: &[PastMove]) -> Option<PlayState> {
         let human_count = common::get_piece_count(board, Human);
         let computer_count = common::get_piece_count(board, Computer);
         if human_count == 0 {

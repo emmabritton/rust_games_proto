@@ -142,7 +142,7 @@ fn moves_for_square(board: &Board, origin: usize) -> Vec<Move> {
     moves
 }
 
-fn calc_value(board: &Board, origin: usize, current: usize, captures: &Vec<usize>) -> usize {
+fn calc_value(board: &Board, origin: usize, current: usize, captures: &[usize]) -> usize {
     debug_log_start!("Calculating value");
     let king_coord = board
         .iter()

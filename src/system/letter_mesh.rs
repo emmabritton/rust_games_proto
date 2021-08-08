@@ -350,7 +350,7 @@ fn letter_mesh_j(builder: &mut MeshBuilder, width: f32, height: f32) -> GameResu
     let right = width - width * PADDING;
     let mid_x = width * 0.5;
     let bar_bottom = height * 0.6;
-    let step_w = (mid_x - left);
+    let step_w = mid_x - left;
     let step_h = height * 0.08;
 
     builder.line(&[pt(left, top), pt(right, top)], THICKNESS, WHITE)?;
@@ -375,8 +375,8 @@ fn letter_mesh_c(builder: &mut MeshBuilder, width: f32, height: f32) -> GameResu
     let left = width * PADDING;
     let bar_top = height * 0.35;
     let bar_bottom = height * 0.65;
-    let step_w = (width - left * 2.0);
-    let step_h = (height - (height * PADDING) - bar_bottom);
+    let step_w = width - left * 2.0;
+    let step_h = height - (height * PADDING) - bar_bottom;
 
     builder.line(&[pt(left, bar_top), pt(left, bar_bottom)], THICKNESS, WHITE)?;
     builder.polyline(
