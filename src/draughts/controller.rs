@@ -89,12 +89,11 @@ impl Controller {
             if self.state.play_state.is_human(SelectingPiece) {
                 debug_log!("No moves possible for human: computer wins!");
                 self.state.play_state = ComputerWin;
-                return;
             } else {
                 debug_log!("No moves possible for computer: human wins!");
                 self.state.play_state = HumanWin;
-                return;
             }
+            return;
         }
         if let Some(new_state) = self
             .rules
@@ -338,7 +337,7 @@ impl Scene for Controller {
     }
 
     fn render(&mut self, ctx: &mut Context, mesh_helper: &mut MeshHelper) -> GameResult<()> {
-        render(ctx, mesh_helper, &mut self.state)
+        render(ctx, mesh_helper, &self.state)
     }
 
     fn play_state(&self) -> PlayState {

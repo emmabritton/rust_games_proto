@@ -36,7 +36,7 @@ enum MoveDir {
 
 pub(super) trait RuleSet {
     fn calc_valid_moves(&self, board: &Board, origin: usize) -> Vec<Move>;
-    fn check_game_over(&self, board: &Board, move_history: &Vec<PastMove>) -> Option<PlayState>;
+    fn check_game_over(&self, board: &Board, move_history: &[PastMove]) -> Option<PlayState>;
     fn is_promotion(&self, board: &Board, origin: usize, dest: usize) -> Option<Square>;
 }
 

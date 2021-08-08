@@ -150,7 +150,7 @@ where
     Leaf::new(moves)
 }
 
-pub(super) fn check_moves<F>(move_history: &Vec<PastMove>, count: usize, predicate: F) -> bool
+pub(super) fn check_moves<F>(move_history: &[PastMove], count: usize, predicate: F) -> bool
 where
     F: Fn(&PastMove) -> bool,
 {

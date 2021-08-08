@@ -4,7 +4,7 @@ use std::fmt::Debug;
 
 //Return the index of the nearest item in the list to 'from' in the direction of 'search'
 pub fn find_nearest<T: Debug>(
-    list: &Vec<T>,
+    list: &[T],
     from: usize,
     search: Direction,
     transform: &dyn Fn(&T) -> BoardCoord,

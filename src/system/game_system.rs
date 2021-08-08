@@ -1,12 +1,10 @@
 use crate::constants::colors::{BLACK, BLUE, DARK_RED, GREEN, LIGHT_BLUE, RED, WHITE};
 use crate::constants::games;
-use crate::system::math::{pt, Offset};
+use crate::system::math::Offset;
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::PlayState::*;
 use crate::system::{PlayState, Scene};
-use crate::{
-    draughts, graphics_testing, mancala, menu, orderchaos, tablut, tictactoe, SCREEN_WIDTH,
-};
+use crate::{draughts, graphics_testing, mancala, menu, orderchaos, tablut, tictactoe};
 use ggez::event::{EventHandler, KeyCode};
 use ggez::graphics::{Color, DrawMode};
 use ggez::input::keyboard::KeyMods;

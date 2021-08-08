@@ -29,7 +29,7 @@ pub fn get_neighbours(origin: usize, plus: bool, cross: bool) -> Vec<usize> {
 }
 
 fn offset(coord: &BoardCoord, x: isize, y: isize) -> (isize, isize) {
-    let mut xy: (isize, isize) = coord.clone().into();
+    let mut xy: (isize, isize) = (*coord).into();
     xy.0 += x;
     xy.1 += y;
     xy
