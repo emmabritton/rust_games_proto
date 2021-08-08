@@ -21,8 +21,8 @@ pub struct Controller {
 impl Controller {
     pub fn new() -> Self {
         let mut board = Board::new();
-        board.computer.fill_holes(6);
-        board.human.fill_holes(6);
+        board.computer.fill_homes(4);
+        board.human.fill_homes(4);
         Controller {
             state: State {
                 play_state: PlayState::Init,
