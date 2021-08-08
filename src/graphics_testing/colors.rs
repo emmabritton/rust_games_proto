@@ -8,7 +8,7 @@ use ggez::graphics::{Color, DrawMode};
 use ggez::input::keyboard::KeyCode;
 use ggez::{graphics, Context, GameResult};
 
-const COLOURS: [Color; 24] = [
+const COLOURS: [Color; 26] = [
     WHITE,
     BLACK,
     TRANSPARENT,
@@ -33,8 +33,10 @@ const COLOURS: [Color; 24] = [
     FAINT_BLUE,
     FAINT_RED,
     FILTER_BLACK,
+    APRICOT,
+    COPPER,
 ];
-const COLOUR_NAMES: [&str; 24] = [
+const COLOUR_NAMES: [&str; 26] = [
     "White",
     "Black",
     "Transparent",
@@ -59,6 +61,8 @@ const COLOUR_NAMES: [&str; 24] = [
     "Faint Blue",
     "Faint Red",
     "Filter Black",
+    "Apricot",
+    "Copper",
 ];
 
 const BACKGROUND: [Color; 2] = [BLACK, WHITE];

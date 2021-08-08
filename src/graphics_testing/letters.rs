@@ -8,21 +8,25 @@ use crate::system::{PlayState, Scene, NEW_TURN_HUMAN};
 use ggez::event::KeyCode;
 use ggez::{Context, GameResult};
 
+#[derive(Default)]
 pub(crate) struct TestLetters {
     grid: bool,
+    debug: bool,
 }
 
 impl TestLetters {
     pub fn new() -> Self {
         set_board_size((10, 10));
-        TestLetters { grid: false }
+        TestLetters::default()
     }
 }
 
 impl Scene for TestLetters {
     fn on_key_down(&mut self, key: KeyCode) {
-        if key == KeyCode::Space {
-            self.grid = !self.grid;
+        match key {
+            KeyCode::Space => self.grid = !self.grid,
+            KeyCode::L => self.debug = !self.debug,
+            _ => {}
         }
     }
 
@@ -39,15 +43,26 @@ impl Scene for TestLetters {
             mesh_helper.draw_mesh(ctx, grid.as_ref(), pt(0., 0.));
         }
 
-        ['a', 'd', 'k', 'o', 'x']
-            .iter()
-            .enumerate()
-            .for_each(|(idx, letter)| {
-                let coord = BoardCoord::from(idx);
-                let mesh = make_letter_mesh(ctx, mesh_helper, size, *letter).unwrap();
-                let pos = Point::from(coord).multiply(size, size);
-                mesh_helper.draw_mesh(ctx, mesh.as_ref(), pos);
-            });
+        [
+            'a', 'd', 'k', 'o', 'x', 'q', 'r', 'b', 'p', 'm', 'w', 'j', 'c', 'n',
+        ]
+        .iter()
+        .enumerate()
+        .for_each(|(idx, letter)| {
+            let coord = BoardCoord::from(idx);
+            let mesh = make_letter_mesh(ctx, mesh_helper, size, *letter).unwrap();
+            let pos = Point::from(coord).multiply(size, size);
+            mesh_helper.draw_mesh(ctx, mesh.as_ref(), pos);
+            if self.debug {
+                mesh_helper.draw_white_text(
+                    ctx,
+                    &letter.to_string(),
+                    pos.offset(8., 2.),
+                    14.,
+                    false,
+                );
+            }
+        });
 
         Ok(())
     }

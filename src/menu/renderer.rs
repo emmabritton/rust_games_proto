@@ -18,8 +18,8 @@ pub(super) fn render(
     let submenu_start = pt(240., 100.);
     let cursor_start = pt(16., 105.);
     let subcursor_start = pt(225., 105.);
-    let desc_start = pt(34., 164. + (ITEMS.len() * 24) as f32);
-    let subdesc_start = pt(34., 164. + (ITEMS.len() * 24) as f32);
+    let desc_start = pt(34., 194. + (ITEMS.len() * 24) as f32);
+    let subdesc_start = pt(34., 204. + (ITEMS.len() * 24) as f32);
     let cursor = mesh_helper.make_triangle(ctx, 12., 12., Direction::Right)?;
 
     mesh_helper.draw_white_text(ctx, "Games", title_start, 48., false);
