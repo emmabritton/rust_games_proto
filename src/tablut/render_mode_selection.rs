@@ -9,7 +9,7 @@ use ggez::{Context, GameResult};
 pub(super) fn render_mode_selection(
     ctx: &mut Context,
     mesh_helper: &mut MeshHelper,
-    state: &mut State,
+    state: &State,
 ) -> GameResult<()> {
     let symbol_size = mesh_helper.calc_height(0.2);
     let attack = mesh_helper.make_rect(ctx, symbol_size, symbol_size, DrawMode::fill())?;
