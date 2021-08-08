@@ -12,7 +12,7 @@ use ggez::{Context, GameResult};
 pub(super) fn render(
     ctx: &mut Context,
     mesh_helper: &mut MeshHelper,
-    state: &mut State,
+    state: &State,
 ) -> GameResult<()> {
     let board_size = mesh_helper.calc_height(0.8);
     let cell_size = board_size / 3.;

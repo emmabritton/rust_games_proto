@@ -16,7 +16,7 @@ use ggez::{Context, GameResult};
 pub(super) fn render(
     ctx: &mut Context,
     mesh_helper: &mut MeshHelper,
-    state: &mut State,
+    state: &State,
 ) -> GameResult<()> {
     if state.play_state == ModeSelection {
         render_mode_selection(ctx, mesh_helper, state)
@@ -25,11 +25,7 @@ pub(super) fn render(
     }
 }
 
-fn render_game(
-    ctx: &mut Context,
-    mesh_helper: &mut MeshHelper,
-    state: &mut State,
-) -> GameResult<()> {
+fn render_game(ctx: &mut Context, mesh_helper: &mut MeshHelper, state: &State) -> GameResult<()> {
     let cell_size = mesh_helper.calc_height(0.09);
     let board_start = pt(cell_size * board_cols() as f32 * 0.5, cell_size);
 

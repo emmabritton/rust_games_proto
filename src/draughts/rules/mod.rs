@@ -9,7 +9,6 @@ use crate::system::PlayState;
 use std::collections::HashMap;
 
 const VALUE_CAPTURE: usize = 10;
-const VALUE_KING: usize = 8;
 const VALUE_STEP: usize = 1;
 
 lazy_static! {

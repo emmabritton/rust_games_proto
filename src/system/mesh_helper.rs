@@ -98,7 +98,7 @@ impl MeshHelper {
                 for y in 1..rows {
                     let y = y as f32;
                     builder.line(
-                        &[pt(0., y * yspacing), pt(height, y * yspacing)],
+                        &[pt(0., y * yspacing), pt(width, y * yspacing)],
                         thickness,
                         line_color,
                     )?;
