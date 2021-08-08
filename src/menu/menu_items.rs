@@ -18,8 +18,8 @@ lazy_static! {
         let tictactoe = MenuItem::new(
             "Tic-Tac-Toe",
             games::TICTACTOE,
-            r"Tic-Tac-Toe (also known as 'noughts and crosses' and 'Xs and Ox') is a simple game dating back thousands of years.
-The board is a 3x3 grid and players take turns placing Xs and Ox until a line of three Xs or Os is made. If the board is filled
+            r"Tic-Tac-Toe (also known as 'noughts and crosses' and 'Xs and Os') is a simple game dating back thousands of years.
+The board is a 3x3 grid and players take turns placing Xs and Os until a line of three Xs or Os is made. If the board is filled
 without a line being made the game is a draw.",
         );
         let mancala = MenuItem::new(
