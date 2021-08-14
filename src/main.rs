@@ -22,10 +22,16 @@ const LOGGING_ENABLED: bool = true;
 #[cfg(not(debug_assertions))]
 const LOGGING_ENABLED: bool = false;
 
+#[cfg(debug_assertions)]
+const FPS_ENABLED: bool = true;
+#[cfg(not(debug_assertions))]
+const FPS_ENABLED: bool = false;
+
 #[macro_use]
 mod macros;
 mod args;
 mod boards;
+mod chess;
 mod constants;
 mod draughts;
 mod ext;
@@ -33,6 +39,7 @@ mod graphics_testing;
 mod mancala;
 mod menu;
 mod orderchaos;
+mod senet;
 mod system;
 mod tablut;
 mod tictactoe;

@@ -36,7 +36,22 @@ from the opposite home and the last one dropped are captured and placed in the p
 If a player has no stones left in their home slots then all stones are moved from the home slots to the end/score slot and
 the player with the highest number of stones wins.",
         );
-        let senet = MenuItem::new("Senet", games::SENET, "Senet is from Ancient Egypt.");
+        let senet = MenuItem::new("Senet", games::SENET, r"Senet is from Ancient Egypt played on a 3x10 board.
+
+Each player has 5 pieces and the aim to get all of them to the home slot (the last one). At the beginning of each turn the player 
+throws 4 sticks: brown on one side and cream on the other; if all 4 are land brown side up then the player can move a piece 5 spaces,
+otherwise they can move the number that landed cream side up. If the player gets 1, 4 or 5 then after moving they can move again.
+
+A piece can not jump over two or more consecutive enemy pieces but any number of allied pieces. A square may only have one piece in it, but a piece can
+land on an enemy piece to swap places.
+
+If no moves are available then the player can skip their turn.
+
+Pieces must land on the House of Happiness (square 26) before continuing, landing on the House of Water (square 27) will send your
+piece back to the House of Rebirth (square 15). Pieces on squares 15 and 26 can not be swapped.
+Landing on home (square 30) removes the piece from the board.
+
+Once a player has removed all their pieces they win.");
         let draughts = MenuItem::new(
             "Draughts",
             games::SUBMENU,
@@ -88,8 +103,8 @@ any distance up, down, left or right but can't jump over pieces.
 
 Only the king can enter the corners and no piece can stop at the castle at the centre of the board.
 
-Any two pieces can capture another by surrounding it (above and below, or to left and right), except for the king as it must be surrounded by
-4 pieces (or 3 pieces and the edge of the board, a corner or the castle). 
+Any two pieces can capture another by surrounding it (above and below, or to left and right), except for the king as it must be 
+surrounded by 4 pieces (or 3 pieces and the edge of the board, a corner or the castle). 
 The castle acts like an ally when capturing even when occupied.
 The king can't capture units.",
         );
@@ -119,10 +134,10 @@ If a sequence is created then the Order player wins. If the board fills up befor
             games::SHOGI_MINI,
             "5x5 variant of the standard game with reduced pieces but otherwise the same rules",
         );
-        let shogi_medium = MenuItem::new("Medium", games::SHOGI_MEDIUM, "Chu shogi, played on a 12x12 board. It introduces some new pieces over the standard game");
-        let shogi_large = MenuItem::new("Large", games::SHOGI_LARGE, "Tai shogi, played on a 25x25 board with 177 pieces. It introduces plenty of new pieces over the standard game");
-        let shogi_huge = MenuItem::new("Huge", games::SHOGI_HUGE, "Taikyoku, played on a 36x36 board with 402 pieces. It introduces a lot of new pieces over the standard game");
-        let chess = MenuItem::new("Chess", games::SUBMENU, "The popular board game");
+        let chess = MenuItem::new("Chess", games::SUBMENU, "The ancient and popular board game");
+        let shogi_medium = MenuItem::new("Medium", games::SHOGI_MEDIUM, "Chu shogi, played on a 12x12 board. It introduces some new piece types over the standard game");
+        let shogi_large = MenuItem::new("Large", games::SHOGI_LARGE, "Tai shogi, played on a 25x25 board with 177 pieces. It introduces several new piece types over the standard game");
+        let shogi_huge = MenuItem::new("Huge", games::SHOGI_HUGE, "Taikyoku, played on a 36x36 board with 402 pieces. It introduces a lot of new piece types over the standard game");
         let chess_standard = MenuItem::new(
             "Standard",
             games::CHESS_STANDARD,
@@ -140,11 +155,6 @@ If a sequence is created then the Order player wins. If the board fills up befor
             games::CHESS_CHECKLESS,
             "Standard game except check doesn't exist, only checkmate",
         );
-        let chess_fourboard = MenuItem::new(
-            "Four-board",
-            games::CHESS_FOURBOARD,
-            "A vast game of chess played on a 16x16 board",
-        );
         let chess_hostage = MenuItem::new(
             "Hostage",
             games::CHESS_HOSTAGE,
@@ -160,7 +170,7 @@ If a sequence is created then the Order player wins. If the board fills up befor
             games::CHESS_MODERN,
             "Similar to the standard game but with some extra pieces",
         );
-        let chess_progressive = MenuItem::new("Progressive", games::CHESS_PROGRESSIVE, "Standard game except the number of moves increases each turn, so 1st - 1, 2nd - 2, 3rd - 3");
+        let chess_progressive = MenuItem::new("Progressive", games::CHESS_PROGRESSIVE, "Standard game except the number of moves increases each turn, so 1st turn - 1 move, 2nd turn - 2 moves, etc.");
 
         vec![
             (tictactoe, None),
@@ -200,7 +210,6 @@ If a sequence is created then the Order player wins. If the board fills up befor
             //         chess_modern,
             //         chess_andernach,
             //         chess_checkless,
-            //         chess_fourboard,
             //         chess_progressive,
             //         chess_hostage,
             //         chess_capablanca,

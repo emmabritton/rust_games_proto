@@ -39,7 +39,7 @@ impl ChessBoard {
 }
 
 impl ChessBoard {
-    #[allow(clippy::iter_nth_zero)] //As there is also an nth(1) I think nth(0) looks nicer than next()
+    #[allow(clippy::iter_nth_zero)] //as there is also an nth(1) I think nth(0) looks nicer than next()
     fn coord_to_idx(&self, coord: &str) -> Option<usize> {
         if !(coord.is_ascii()) {
             return None;

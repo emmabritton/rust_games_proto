@@ -1,7 +1,7 @@
 use crate::boards::idx_coord::BoardCoord;
 use crate::boards::{board_cols, board_rows};
 use crate::constants::colors::{
-    alpha, CREAM, DARK_GREEN, LIGHT_BLUE, PIECE_COMPUTER, PIECE_PLAYER, TRANSPARENT,
+    alpha, CREAM, DARK_GREEN, LIGHT_BLUE, PIECE_COMPUTER, PIECE_HUMAN, TRANSPARENT,
 };
 use crate::draughts::moves::Move::*;
 use crate::draughts::{board_index_to_pdn_num, Square, State};
@@ -108,10 +108,10 @@ pub(super) fn render(
                 );
             }
             Square::HumanMan => {
-                mesh_helper.draw_coloured_mesh(ctx, piece.as_ref(), xy, PIECE_PLAYER)
+                mesh_helper.draw_coloured_mesh(ctx, piece.as_ref(), xy, PIECE_HUMAN)
             }
             Square::HumanKing => {
-                mesh_helper.draw_coloured_mesh(ctx, piece.as_ref(), xy, PIECE_PLAYER);
+                mesh_helper.draw_coloured_mesh(ctx, piece.as_ref(), xy, PIECE_HUMAN);
                 mesh_helper.draw_mesh(
                     ctx,
                     king.as_ref(),
