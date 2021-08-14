@@ -2,6 +2,8 @@
 
 Collection of tactical/strategic board games. This is a proof of concept and example implementation of the rules and gameplay, and not a releasable product. However the program should be bug free and usable.
 
+Each game plays, looks and controls differently as each is an experiment in UI and UX.
+
 ### Controls
 
 `up`, `down`, `left`, `right` - Move cursor
@@ -24,7 +26,7 @@ FLAGS:
 OPTIONS:
 OPTIONS:
     -g, --game <game>...    Open game directly [possible values: tictactoe, mancala, draughts_brazilian,
-                            draughts_canadian, draughts_international, draughts_english, orderchaos, tablut]
+                                                        draughts_canadian, draughts_international, draughts_english, orderchaos, senet, tablut]
 
 ```
 
@@ -55,6 +57,7 @@ OPTIONS:
 - Mancala
 - Tablut
 - Order and Chaos
+- Senet
 
 #### Screenshots
 

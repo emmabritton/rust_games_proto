@@ -5,7 +5,7 @@ pub(super) const ARG_GAME: &str = "game";
 pub(super) const ARG_RULES: &str = "rules";
 pub(super) const ARG_TEST: &str = "graphicstest";
 
-const GAMES: [&str; 17] = [
+const GAMES: [&str; 18] = [
     games::TICTACTOE,
     games::MANCALA,
     games::DRAUGHTS_BRAZILIAN,
@@ -29,7 +29,7 @@ const GAMES: [&str; 17] = [
     // games::SHOGI_HUGE,
     games::ORDERCHAOS,
     // games::BLACKHOLE,
-    // games::SENET,
+    games::SENET,
     games::TABLUT,
     // games::GO,
     // games::RITHMOMANCHY,

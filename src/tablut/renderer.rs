@@ -105,6 +105,9 @@ fn render_game(ctx: &mut Context, mesh_helper: &mut MeshHelper, state: &State) -
             draw_move(ctx, mesh_helper, cell_size, board_start, &mov, false)?;
         }
     } else if state.play_state.is_either(SelectingMove) {
+        state
+            .cursor
+            .render_dark(ctx, mesh_helper, board_start, cell_size)?;
         draw_move(
             ctx,
             mesh_helper,

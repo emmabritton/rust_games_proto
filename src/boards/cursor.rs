@@ -1,12 +1,12 @@
 use crate::boards::idx_coord::BoardCoord;
 use crate::boards::{board_cols, board_rows};
-use crate::constants::colors::LIGHT_BLUE;
+use crate::constants::colors::{BLUE, DARK_BLUE, LIGHT_BLUE};
 use crate::constants::Direction;
 use crate::system::ggez_ext::keycode_to_direction;
 use crate::system::math::{Offset, OffsetTuple, Point};
 use crate::system::mesh_helper::MeshHelper;
 use ggez::event::KeyCode;
-use ggez::graphics::DrawMode;
+use ggez::graphics::{Color, DrawMode};
 use ggez::{Context, GameResult};
 
 #[derive(Debug, Clone)]
@@ -81,12 +81,13 @@ impl Cursor {
             .offset_point(board_start)
     }
 
-    pub fn render(
+    fn draw(
         &self,
         ctx: &mut Context,
         mesh_helper: &mut MeshHelper,
         board_start: Point,
         cell_size: f32,
+        colour: Color,
     ) -> GameResult<()> {
         let selection_box =
             mesh_helper.make_rect(ctx, cell_size, cell_size, DrawMode::stroke(4.))?;
@@ -94,8 +95,28 @@ impl Cursor {
             ctx,
             selection_box.as_ref(),
             self.point(board_start, cell_size),
-            LIGHT_BLUE,
+            colour,
         );
         Ok(())
+    }
+
+    pub fn render(
+        &self,
+        ctx: &mut Context,
+        mesh_helper: &mut MeshHelper,
+        board_start: Point,
+        cell_size: f32,
+    ) -> GameResult<()> {
+        self.draw(ctx, mesh_helper, board_start, cell_size, LIGHT_BLUE)
+    }
+
+    pub fn render_dark(
+        &self,
+        ctx: &mut Context,
+        mesh_helper: &mut MeshHelper,
+        board_start: Point,
+        cell_size: f32,
+    ) -> GameResult<()> {
+        self.draw(ctx, mesh_helper, board_start, cell_size, BLUE)
     }
 }

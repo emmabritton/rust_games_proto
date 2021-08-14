@@ -1,10 +1,13 @@
 use crate::constants::colors::{BLACK, BLUE, DARK_RED, GREEN, LIGHT_BLUE, RED, WHITE};
 use crate::constants::games;
-use crate::system::math::Offset;
+use crate::system::math::{pt, Offset};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::PlayState::*;
 use crate::system::{PlayState, Scene};
-use crate::{chess, draughts, graphics_testing, mancala, menu, orderchaos, tablut, tictactoe};
+use crate::{
+    chess, draughts, graphics_testing, mancala, menu, orderchaos, senet, tablut, tictactoe,
+    FPS_ENABLED, SCREEN_WIDTH,
+};
 use ggez::event::{EventHandler, KeyCode};
 use ggez::graphics::{Color, DrawMode};
 use ggez::input::keyboard::KeyMods;
@@ -61,6 +64,7 @@ impl GameSystem {
             | games::DRAUGHTS_ENGLISH => Box::new(draughts::controller::Controller::new(game)),
             games::MANCALA => Box::new(mancala::controller::Controller::new()),
             games::ORDERCHAOS => Box::new(orderchaos::controller::Controller::new()),
+            games::SENET => Box::new(senet::controller::Controller::new()),
             games::CHESS_STANDARD
             | games::CHESS_MINI
             | games::CHESS_GRAND
@@ -151,14 +155,16 @@ impl EventHandler for GameSystem {
 
         self.handle_game_over(ctx)?;
 
-        // self.mesh_helper.draw_text(
-        //     ctx,
-        //     &format!("{:.0}", timer::fps(ctx)),
-        //     pt(SCREEN_WIDTH - 60., 0.),
-        //     RED,
-        //     24.,
-        //     false,
-        // );
+        if FPS_ENABLED {
+            self.mesh_helper.draw_text(
+                ctx,
+                &format!("{:.0}", timer::fps(ctx)),
+                pt(SCREEN_WIDTH - 60., 0.),
+                RED,
+                24.,
+                false,
+            );
+        }
 
         graphics::present(ctx)?;
         timer::yield_now();

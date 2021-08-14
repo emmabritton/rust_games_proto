@@ -29,7 +29,7 @@ const COLOURS: [Color; 26] = [
     BROWN,
     DARK_BROWN,
     PIECE_COMPUTER,
-    PIECE_PLAYER,
+    PIECE_HUMAN,
     FAINT_BLUE,
     FAINT_RED,
     FILTER_BLACK,

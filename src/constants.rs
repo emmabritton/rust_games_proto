@@ -64,7 +64,7 @@ pub mod colors {
     pub const DARK_CREAM: Color = clr(0.8, 0.75, 0.55);
     pub const BROWN: Color = clr(0.3, 0.25, 0.2);
     pub const DARK_BROWN: Color = clr(0.2, 0.15, 0.1);
-    pub const PIECE_PLAYER: Color = clr(0.9, 0.85, 0.85);
+    pub const PIECE_HUMAN: Color = clr(0.9, 0.85, 0.85);
     pub const PIECE_COMPUTER: Color = clr(0.35, 0.25, 0.2);
     pub const APRICOT: Color = clr(1.0, 0.81, 0.62);
     pub const COPPER: Color = clr(0.82, 0.55, 0.28);

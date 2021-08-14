@@ -1,7 +1,7 @@
 use crate::boards::idx_coord::BoardCoord;
 use crate::boards::{board_cols, board_rows};
 use crate::constants::colors::{
-    alpha, APRICOT, BLACK, COPPER, CREAM, DARK_GREEN, LIGHT_BLUE, PIECE_COMPUTER, PIECE_PLAYER,
+    alpha, APRICOT, BLACK, COPPER, CREAM, DARK_GREEN, LIGHT_BLUE, PIECE_COMPUTER, PIECE_HUMAN,
     TRANSPARENT, WHITE,
 };
 
