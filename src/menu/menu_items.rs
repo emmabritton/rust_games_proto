@@ -119,10 +119,10 @@ If a sequence is created then the Order player wins. If the board fills up befor
             games::SHOGI_MINI,
             "5x5 variant of the standard game with reduced pieces but otherwise the same rules",
         );
+        let chess = MenuItem::new("Chess", games::SUBMENU, "The ancient and popular board game");
         let shogi_medium = MenuItem::new("Medium", games::SHOGI_MEDIUM, "Chu shogi, played on a 12x12 board. It introduces some new piece types over the standard game");
         let shogi_large = MenuItem::new("Large", games::SHOGI_LARGE, "Tai shogi, played on a 25x25 board with 177 pieces. It introduces several new piece types over the standard game");
         let shogi_huge = MenuItem::new("Huge", games::SHOGI_HUGE, "Taikyoku, played on a 36x36 board with 402 pieces. It introduces a lot of new piece types over the standard game");
-        let chess = MenuItem::new("Chess", games::SUBMENU, "The popular board game");
         let chess_standard = MenuItem::new(
             "Standard",
             games::CHESS_STANDARD,
@@ -139,11 +139,6 @@ If a sequence is created then the Order player wins. If the board fills up befor
             "Checkless",
             games::CHESS_CHECKLESS,
             "Standard game except check doesn't exist, only checkmate",
-        );
-        let chess_fourboard = MenuItem::new(
-            "Four-board",
-            games::CHESS_FOURBOARD,
-            "A vast game of chess played on a 16x16 board",
         );
         let chess_hostage = MenuItem::new(
             "Hostage",
@@ -191,21 +186,20 @@ If a sequence is created then the Order player wins. If the board fills up befor
             //         shogi_huge,
             //     ]),
             // ),
-            // (
-            //     chess,
-            //     Some(vec![
-            //         chess_standard,
-            //         chess_mini,
-            //         chess_grand,
-            //         chess_modern,
-            //         chess_andernach,
-            //         chess_checkless,
-            //         chess_fourboard,
-            //         chess_progressive,
-            //         chess_hostage,
-            //         chess_capablanca,
-            //     ]),
-            // ),
+            (
+                chess,
+                Some(vec![
+                    chess_standard,
+                    chess_mini,
+                    chess_grand,
+                    chess_modern,
+                    chess_andernach,
+                    chess_checkless,
+                    chess_progressive,
+                    chess_hostage,
+                    chess_capablanca,
+                ]),
+            ),
         ]
     };
 }

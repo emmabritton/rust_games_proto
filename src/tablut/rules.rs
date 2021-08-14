@@ -112,7 +112,7 @@ fn moves_for_square(board: &Board, origin: usize) -> Vec<Move> {
                         .collect();
 
                     if !FORBIDDEN[&board[origin]].contains(&current) {
-                        let value = calc_value(board, origin, current, &captures);
+                        let value = calc_value_of_move(board, origin, current, &captures);
                         debug_log!(
                             "Found move from {} to {} with {} captures (score: {})",
                             origin,
@@ -142,7 +142,7 @@ fn moves_for_square(board: &Board, origin: usize) -> Vec<Move> {
     moves
 }
 
-fn calc_value(board: &Board, origin: usize, current: usize, captures: &[usize]) -> usize {
+fn calc_value_of_move(board: &Board, origin: usize, current: usize, captures: &[usize]) -> usize {
     debug_log_start!("Calculating value");
     let king_coord = board
         .iter()

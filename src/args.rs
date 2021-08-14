@@ -5,23 +5,22 @@ pub(super) const ARG_GAME: &str = "game";
 pub(super) const ARG_RULES: &str = "rules";
 pub(super) const ARG_TEST: &str = "graphicstest";
 
-const GAMES: [&str; 8] = [
+const GAMES: [&str; 17] = [
     games::TICTACTOE,
     games::MANCALA,
     games::DRAUGHTS_BRAZILIAN,
     games::DRAUGHTS_CANADIAN,
     games::DRAUGHTS_INTERNATIONAL,
     games::DRAUGHTS_ENGLISH,
-    // games::CHESS_CAPABLANCA,
-    // games::CHESS_PROGRESSIVE,
-    // games::CHESS_MODERN,
-    // games::CHESS_HOSTAGE,
-    // games::CHESS_FOURBOARD,
-    // games::CHESS_CHECKLESS,
-    // games::CHESS_ANDERNACH,
-    // games::CHESS_GRAND,
-    // games::CHESS_MINI,
-    // games::CHESS_STANDARD,
+    games::CHESS_CAPABLANCA,
+    games::CHESS_PROGRESSIVE,
+    games::CHESS_MODERN,
+    games::CHESS_HOSTAGE,
+    games::CHESS_CHECKLESS,
+    games::CHESS_ANDERNACH,
+    games::CHESS_GRAND,
+    games::CHESS_MINI,
+    games::CHESS_STANDARD,
     // games::UR,
     // games::SHOGI_STANDARD,
     // games::SHOGI_MINI,

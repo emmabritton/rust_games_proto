@@ -26,6 +26,7 @@ const LOGGING_ENABLED: bool = false;
 mod macros;
 mod args;
 mod boards;
+mod chess;
 mod constants;
 mod draughts;
 mod ext;

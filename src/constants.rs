@@ -27,7 +27,6 @@ pub mod games {
     pub const CHESS_ANDERNACH: &str = "chess_andernach";
     pub const CHESS_GRAND: &str = "chess_grand";
     pub const CHESS_MODERN: &str = "chess_modern";
-    pub const CHESS_FOURBOARD: &str = "chess_fourboard";
     pub const CHESS_MINI: &str = "chess_mini";
     pub const CHESS_CAPABLANCA: &str = "chess_capablanca";
     pub const CHESS_HOSTAGE: &str = "chess_hostage";

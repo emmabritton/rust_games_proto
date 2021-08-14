@@ -4,7 +4,7 @@ use crate::system::math::Offset;
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::PlayState::*;
 use crate::system::{PlayState, Scene};
-use crate::{draughts, graphics_testing, mancala, menu, orderchaos, tablut, tictactoe};
+use crate::{chess, draughts, graphics_testing, mancala, menu, orderchaos, tablut, tictactoe};
 use ggez::event::{EventHandler, KeyCode};
 use ggez::graphics::{Color, DrawMode};
 use ggez::input::keyboard::KeyMods;
@@ -61,6 +61,15 @@ impl GameSystem {
             | games::DRAUGHTS_ENGLISH => Box::new(draughts::controller::Controller::new(game)),
             games::MANCALA => Box::new(mancala::controller::Controller::new()),
             games::ORDERCHAOS => Box::new(orderchaos::controller::Controller::new()),
+            games::CHESS_STANDARD
+            | games::CHESS_MINI
+            | games::CHESS_GRAND
+            | games::CHESS_ANDERNACH
+            | games::CHESS_CHECKLESS
+            | games::CHESS_HOSTAGE
+            | games::CHESS_MODERN
+            | games::CHESS_PROGRESSIVE
+            | games::CHESS_CAPABLANCA => Box::new(chess::controller::Controller::new(game)),
             _ => panic!("Invalid game: {}", game),
         }
     }

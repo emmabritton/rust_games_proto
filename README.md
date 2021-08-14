@@ -42,6 +42,16 @@ OPTIONS:
   - Brazilian *(8x8 with flying kings)*
   - International  *(10x10 with flying kings)*
   - Canadian  *(12x12 with flying kings)*
+- Chess
+  - Standard *(8x8)*
+  - Modern *(x)*
+  - Mini *(x)*
+  - Grand *(x)*
+  - Andernach *(x)*
+  - Checkless *(x)*
+  - Progressive *(x)*
+  - Hostage *(x)*
+  - Capablanca *(x)*
 - Mancala
 - Tablut
 - Order and Chaos
