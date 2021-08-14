@@ -14,10 +14,12 @@ pub fn set_board_size(size: (usize, usize)) {
     BOARD_COLS.store(size.1, Ordering::SeqCst);
 }
 
+#[inline]
 pub fn board_rows() -> usize {
     BOARD_ROWS.load(Ordering::SeqCst)
 }
 
+#[inline]
 pub fn board_cols() -> usize {
     BOARD_COLS.load(Ordering::SeqCst)
 }

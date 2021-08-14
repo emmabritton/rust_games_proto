@@ -119,9 +119,9 @@ If a sequence is created then the Order player wins. If the board fills up befor
             games::SHOGI_MINI,
             "5x5 variant of the standard game with reduced pieces but otherwise the same rules",
         );
-        let shogi_medium = MenuItem::new("Medium", games::SHOGI_MEDIUM, "Chu shogi, played on a 12x12 board. It introduces some new pieces over the standard game");
-        let shogi_large = MenuItem::new("Large", games::SHOGI_LARGE, "Tai shogi, played on a 25x25 board with 177 pieces. It introduces plenty of new pieces over the standard game");
-        let shogi_huge = MenuItem::new("Huge", games::SHOGI_HUGE, "Taikyoku, played on a 36x36 board with 402 pieces. It introduces a lot of new pieces over the standard game");
+        let shogi_medium = MenuItem::new("Medium", games::SHOGI_MEDIUM, "Chu shogi, played on a 12x12 board. It introduces some new piece types over the standard game");
+        let shogi_large = MenuItem::new("Large", games::SHOGI_LARGE, "Tai shogi, played on a 25x25 board with 177 pieces. It introduces several new piece types over the standard game");
+        let shogi_huge = MenuItem::new("Huge", games::SHOGI_HUGE, "Taikyoku, played on a 36x36 board with 402 pieces. It introduces a lot of new piece types over the standard game");
         let chess = MenuItem::new("Chess", games::SUBMENU, "The popular board game");
         let chess_standard = MenuItem::new(
             "Standard",
@@ -160,7 +160,7 @@ If a sequence is created then the Order player wins. If the board fills up befor
             games::CHESS_MODERN,
             "Similar to the standard game but with some extra pieces",
         );
-        let chess_progressive = MenuItem::new("Progressive", games::CHESS_PROGRESSIVE, "Standard game except the number of moves increases each turn, so 1st - 1, 2nd - 2, 3rd - 3");
+        let chess_progressive = MenuItem::new("Progressive", games::CHESS_PROGRESSIVE, "Standard game except the number of moves increases each turn, so 1st turn - 1 move, 2nd turn - 2 moves, etc.");
 
         vec![
             (tictactoe, None),
