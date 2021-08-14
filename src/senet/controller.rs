@@ -129,13 +129,9 @@ impl Scene for Controller {
                     self.roll(Player::Human);
                     self.state.msg = Some(String::from("Your turn"));
                 }
-            } else {
-                if !self.state.cursor.handle_input(key) {
-                    if key == KeyCode::Return
-                        && !self.state.get_moves_for_selected_piece().is_empty()
-                    {
-                        self.state.play_state = PlayState::Playing(Turn::Human(SelectingMove));
-                    }
+            } else if !self.state.cursor.handle_input(key) {
+                if key == KeyCode::Return && !self.state.get_moves_for_selected_piece().is_empty() {
+                    self.state.play_state = PlayState::Playing(Turn::Human(SelectingMove));
                 }
             }
         } else if self.state.play_state.is_human(SelectingMove) {
@@ -174,14 +170,12 @@ impl Scene for Controller {
                 {
                     self.roll(Player::Computer);
                     self.state.next_move_time = ANIMATION_DURATION;
-                } else {
-                    if self.state.play_state.is_computer(SelectingPiece) {
-                        self.ai_update();
-                        self.state.next_move_time = ANIMATION_DURATION;
-                        self.state.play_state = PlayState::Playing(Computer(SelectingMove))
-                    } else if self.state.play_state.is_computer(SelectingMove) {
-                        self.process_move();
-                    }
+                } else if self.state.play_state.is_computer(SelectingPiece) {
+                    self.ai_update();
+                    self.state.next_move_time = ANIMATION_DURATION;
+                    self.state.play_state = PlayState::Playing(Computer(SelectingMove))
+                } else if self.state.play_state.is_computer(SelectingMove) {
+                    self.process_move();
                 }
             }
         }

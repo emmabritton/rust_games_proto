@@ -6,41 +6,41 @@ use std::collections::HashMap;
 
 pub(super) fn get_chess_game_type(game: &str) -> GameType {
     match game {
-        CHESS_STANDARD => GameType::STANDARD,
-        CHESS_PROGRESSIVE => GameType::PROGRESSIVE,
-        CHESS_CAPABLANCA => GameType::CAPABLANCA,
-        CHESS_MODERN => GameType::MODERN,
-        CHESS_ANDERNACH => GameType::ANDERNACH,
-        CHESS_CHECKLESS => GameType::CHECKLESS,
-        CHESS_HOSTAGE => GameType::HOSTAGE,
+        CHESS_STANDARD => GameType::Standard,
+        CHESS_PROGRESSIVE => GameType::Progressive,
+        CHESS_CAPABLANCA => GameType::Capablanca,
+        CHESS_MODERN => GameType::Modern,
+        CHESS_ANDERNACH => GameType::Andernach,
+        CHESS_CHECKLESS => GameType::Checkless,
+        CHESS_HOSTAGE => GameType::Hostage,
         _ => panic!("Unsupported game type: {}", game),
     }
 }
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub(super) enum GameType {
-    STANDARD,
-    PROGRESSIVE,
-    CAPABLANCA,
-    MODERN,
-    CHECKLESS,
-    ANDERNACH,
-    HOSTAGE,
+    Standard,
+    Progressive,
+    Capablanca,
+    Modern,
+    Checkless,
+    Andernach,
+    Hostage,
 }
 
 impl GameType {
     pub(super) fn get_init_board(&self) -> Board {
         match self {
-            GameType::CAPABLANCA => init::CHESS_CAPABLANCA.clone(),
-            GameType::MODERN => init::CHESS_MODERN.clone(),
+            GameType::Capablanca => init::CHESS_CAPABLANCA.clone(),
+            GameType::Modern => init::CHESS_MODERN.clone(),
             _ => init::CHESS_STANDARD.clone(),
         }
     }
 
     pub(super) fn get_board_size(&self) -> (usize, usize) {
         match self {
-            GameType::MODERN => (9, 9),
-            GameType::CAPABLANCA => (8, 10),
+            GameType::Modern => (9, 9),
+            GameType::Capablanca => (8, 10),
             _ => (8, 8),
         }
     }
@@ -51,7 +51,7 @@ impl GameType {
 
     pub(super) fn get_piece_letter(&self, piece: &ChessPiece) -> char {
         match self {
-            GameType::MODERN => {
+            GameType::Modern => {
                 if piece == &ChessPiece::KnightBishop {
                     'm'
                 } else {
@@ -64,15 +64,15 @@ impl GameType {
 
     pub(super) fn get_moves_for_turn(&self, state: &State) -> usize {
         match self {
-            GameType::PROGRESSIVE => state.move_history.len(),
+            GameType::Progressive => state.move_history.len(),
             _ => 1,
         }
     }
 
     pub(super) fn get_board_cell_count(&self) -> usize {
         match self {
-            GameType::CAPABLANCA => 80,
-            GameType::MODERN => 81,
+            GameType::Capablanca => 80,
+            GameType::Modern => 81,
             _ => 64,
         }
     }
@@ -140,7 +140,7 @@ impl GameType {
 
     pub(super) fn process_move(&self, board: &mut Board, mov: &Move) {
         match self {
-            GameType::ANDERNACH => {
+            GameType::Andernach => {
                 if let Some(opposite_player) = board[mov.to].get_player() {
                     let square = match opposite_player {
                         Player::Human => Square::Human(board[mov.from].get_piece().unwrap()),
@@ -161,21 +161,21 @@ impl GameType {
     }
 
     pub(super) fn is_king_in_check(&self, board: &Board, player_to_check: Player) -> bool {
-        if self == &GameType::CHECKLESS {
-            return false;
+        if self == &GameType::Checkless {
+            false
         } else {
-            return false;
+            false //TODO calc
         }
     }
 
     pub(super) fn is_king_in_checkmate(&self, board: &Board, player_to_check: Player) -> bool {
-        return false;
+        false
     }
 
     fn calc_moves(&self, board: &Board, player: Player, origin: usize) -> Vec<Move> {
         return board[origin]
             .get_piece()
-            .expect(&format!("Square has player but no piece: {}", origin))
+            .unwrap_or_else(|| panic!("Square has player but no piece: {}", origin))
             .calc_moves(self, board, origin);
     }
 }

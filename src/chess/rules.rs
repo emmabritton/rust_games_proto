@@ -50,8 +50,7 @@ impl ChessPiece {
 
 fn is_capturable(from: Square, target: Square) -> bool {
     if let Some(origin_player) = from.get_player() {
-        return target.get_player() == None
-            || target.get_player() == Some(origin_player.opposite());
+        target.get_player() == None || target.get_player() == Some(origin_player.opposite())
     } else {
         panic!("Checked capturable from empty square");
     }
@@ -91,7 +90,7 @@ fn check_line(board: &Board, origin: usize, x_diff: isize, y_diff: isize) -> Vec
             break;
         }
     }
-    return result;
+    result
 }
 
 fn calc_king(game_type: &GameType, board: &Board, origin_idx: usize) -> Vec<Move> {
@@ -242,7 +241,7 @@ fn check_jump_pattern(board: &Board, origin: usize, vert: usize, horz: usize) ->
         can_jump(board, origin, horz, -vert),
     ]
     .into_iter()
-    .filter_map(|item| item)
+    .flatten()
     .collect()
 }
 
@@ -257,5 +256,5 @@ fn can_jump(board: &Board, origin: usize, vert: isize, horz: isize) -> Option<us
             return Some(idx);
         }
     }
-    return None;
+    None
 }
