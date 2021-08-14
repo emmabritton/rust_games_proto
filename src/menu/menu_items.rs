@@ -175,7 +175,7 @@ If a sequence is created then the Order player wins. If the board fills up befor
         vec![
             (tictactoe, None),
             (mancala, None),
-            (senet, None),
+            // (senet, None),
             (
                 draughts,
                 Some(vec![
@@ -201,20 +201,20 @@ If a sequence is created then the Order player wins. If the board fills up befor
             //         shogi_huge,
             //     ]),
             // ),
-            (
-                chess,
-                Some(vec![
-                    chess_standard,
-                    chess_mini,
-                    chess_grand,
-                    chess_modern,
-                    chess_andernach,
-                    chess_checkless,
-                    chess_progressive,
-                    chess_hostage,
-                    chess_capablanca,
-                ]),
-            ),
+            // (
+            //     chess,
+            //     Some(vec![
+            //         chess_standard,
+            //         chess_mini,
+            //         chess_grand,
+            //         chess_modern,
+            //         chess_andernach,
+            //         chess_checkless,
+            //         chess_progressive,
+            //         chess_hostage,
+            //         chess_capablanca,
+            //     ]),
+            // ),
         ]
     };
 }
