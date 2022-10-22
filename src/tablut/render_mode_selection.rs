@@ -1,6 +1,6 @@
 use crate::constants::colors::{LIGHT_BLUE, LIGHT_GRAY};
 use crate::constants::Direction;
-use crate::system::math::{pt, Offset};
+use crate::system::math::{Offset, pt};
 use crate::system::mesh_helper::MeshHelper;
 use crate::tablut::{Mode, State};
 use ggez::graphics::DrawMode;

@@ -24,7 +24,7 @@ pub(super) fn process(controller: &mut Controller, delta: f64) {
 
             debug_log!("{} best moves available", best_moves.len());
 
-            let move_idx = thread_rng().gen_range(0, best_moves.len());
+            let move_idx = thread_rng().gen_range(0.. best_moves.len());
             let mov = best_moves[move_idx];
             controller.state.piece_cursor.idx = mov.origin();
             let (idx, _) = controller

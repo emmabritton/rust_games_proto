@@ -3,7 +3,7 @@ use crate::constants::Direction;
 use crate::ext::NewLines;
 use crate::menu::menu_items::ITEMS;
 use crate::menu::State;
-use crate::system::math::{pt, Offset, Point};
+use crate::system::math::{pt, Point, Offset};
 use crate::system::mesh_helper::MeshHelper;
 use ggez::graphics::Color;
 use ggez::{Context, GameResult};

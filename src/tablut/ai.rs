@@ -10,7 +10,7 @@ pub(super) fn process(state: &mut State) {
 
     debug_log!("{} best moves available", best_moves.len());
 
-    let idx = thread_rng().gen_range(0, best_moves.len());
+    let idx = thread_rng().gen_range(0.. best_moves.len());
     let mov = best_moves[idx];
     debug_log!("Playing {:?}", mov);
     state.cursor.idx = mov.origin;

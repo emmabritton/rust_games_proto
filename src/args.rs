@@ -1,5 +1,6 @@
+use clap::{Arg, ArgAction, ArgMatches, command};
+use clap::builder::PossibleValuesParser;
 use crate::constants::games;
-use clap::{App, Arg, ArgMatches};
 
 pub(super) const ARG_GAME: &str = "game";
 pub(super) const ARG_RULES: &str = "rules";
@@ -35,37 +36,29 @@ const GAMES: [&str; 18] = [
     // games::RITHMOMANCHY,
 ];
 
-pub(super) fn args_matches<'a>() -> ArgMatches<'a> {
-    App::new(env!("CARGO_PKG_NAME"))
-        .author(env!("CARGO_PKG_AUTHORS"))
-        .version(env!("CARGO_PKG_VERSION"))
-        .about(env!("CARGO_PKG_DESCRIPTION"))
+pub(super) fn args_matches() -> ArgMatches {
+    command!()
         .arg(
-            Arg::with_name(ARG_GAME)
-                .short("g")
+            Arg::new(ARG_GAME)
+                .short('g')
                 .long("game")
                 .help("Open game directly")
-                .required(false)
-                .takes_value(true)
-                .multiple(true)
-                .possible_values(&GAMES),
+                .num_args(1)
+                .value_parser(PossibleValuesParser::new(&GAMES))
         )
         .arg(
-            Arg::with_name(ARG_RULES)
-                .short("r")
+            Arg::new(ARG_RULES)
+                .short('r')
                 .help("Print rules instead of opening game")
-                .required(false)
                 .requires("game")
-                .takes_value(false)
-                .multiple(false),
+                .action(ArgAction::SetTrue)
         )
         .arg(
-            Arg::with_name(ARG_TEST)
+            Arg::new(ARG_TEST)
                 .long("graphicstest")
-                .required(false)
-                .takes_value(false)
-                .multiple(false)
-                .hidden(true),
+                .action(ArgAction::SetTrue)
+                .conflicts_with_all(vec![ARG_RULES, ARG_GAME])
+                .hide(true)
         )
         .get_matches()
 }

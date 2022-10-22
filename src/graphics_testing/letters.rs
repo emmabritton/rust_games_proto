@@ -2,7 +2,7 @@ use crate::boards::idx_coord::BoardCoord;
 use crate::boards::set_board_size;
 use crate::constants::colors::LIGHT_GRAY;
 use crate::system::letter_mesh::*;
-use crate::system::math::{pt, Offset, Point};
+use crate::system::math::{pt, Point, Offset};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::{PlayState, Scene, NEW_TURN_HUMAN};
 use ggez::event::KeyCode;

@@ -7,7 +7,7 @@ use crate::constants::colors::{
 
 use crate::chess::State;
 use crate::system::letter_mesh::make_letter_mesh;
-use crate::system::math::{pt, pt_usize, Offset, OffsetTuple, Point};
+use crate::system::math::{pt, pt_usize, Point, Offset, OffsetTuple};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::Player;
 use crate::system::TurnState::{SelectingMove, SelectingPiece};

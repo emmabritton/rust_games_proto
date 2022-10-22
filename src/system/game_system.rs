@@ -1,6 +1,6 @@
 use crate::constants::colors::{BLACK, BLUE, DARK_RED, GREEN, LIGHT_BLUE, RED, WHITE};
 use crate::constants::games;
-use crate::system::math::{pt, Offset};
+use crate::system::math::{Offset, pt};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::PlayState::*;
 use crate::system::{PlayState, Scene};

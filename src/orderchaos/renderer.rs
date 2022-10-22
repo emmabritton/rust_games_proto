@@ -3,7 +3,7 @@ use crate::boards::{board_cols, board_rows};
 use crate::constants::colors::{FILTER_BLACK, LIGHT_BLUE, LIGHT_GRAY, RED, TRANSPARENT, WHITE};
 use crate::orderchaos::render_mode_selection::render_mode_selection;
 use crate::orderchaos::{Mode, Square, State};
-use crate::system::math::{pt, Offset};
+use crate::system::math::{Offset, pt};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::PlayState;
 use crate::system::TurnState::SelectingMove;

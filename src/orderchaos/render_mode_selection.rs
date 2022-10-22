@@ -1,7 +1,7 @@
 use crate::constants::colors::{LIGHT_BLUE, LIGHT_GRAY, WHITE};
 use crate::orderchaos::renderer::square_to_color;
 use crate::orderchaos::{Mode, State};
-use crate::system::math::{pt, Offset};
+use crate::system::math::{Offset, pt};
 use crate::system::mesh_helper::MeshHelper;
 use ggez::graphics::DrawMode;
 use ggez::{Context, GameResult};

@@ -60,7 +60,7 @@ fn can_jump(board: &Board, current: usize, target: usize, player: Player) -> boo
         let mut consecutive_count = 0;
         for slot in board.iter().take(target).skip(current + 1) {
             //TODO maybe also reset count after changing row
-            if slot == Square::Empty || slot == player.into() {
+            if slot == &Square::Empty || slot == &player.into() {
                 consecutive_count = 0
             } else {
                 consecutive_count += 1;

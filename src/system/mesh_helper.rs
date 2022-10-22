@@ -1,9 +1,7 @@
 use crate::constants::colors::WHITE;
 use crate::constants::{Direction, TOLERANCE};
 use crate::system::math::{pt, Point};
-use ggez::graphics::{
-    Color, DrawMode, Drawable, Mesh, MeshBuilder, Rect, Scale, Text, TextFragment,
-};
+use ggez::graphics::{Color, DrawMode, Drawable, Mesh, MeshBuilder, Rect, Text, TextFragment, PxScale};
 use ggez::{graphics, Context, GameResult};
 use std::collections::HashMap;
 use std::rc::Rc;
@@ -27,10 +25,9 @@ impl MeshHelper {
 
 impl MeshHelper {
     pub fn get_screen_size(ctx: &mut Context) -> (f32, f32) {
-        return graphics::window(ctx)
-            .get_inner_size()
-            .map(|physical| (physical.width as f32, physical.height as f32))
-            .expect("Failed to get/convert window size");
+        let inner_size = graphics::window(ctx)
+            .inner_size();
+        (inner_size.width as f32, inner_size.height as f32)
     }
 }
 
@@ -79,7 +76,7 @@ impl MeshHelper {
                                 DrawMode::fill(),
                                 Rect::new(x * xspacing, y * yspacing, xspacing, yspacing),
                                 square_colors[color_idx],
-                            );
+                            )?;
                             color_idx = if color_idx == 0 { 1 } else { 0 }
                         }
                         color_idx = if color_idx == 0 { 1 } else { 0 } //reset for next line
@@ -167,7 +164,7 @@ impl MeshHelper {
             ctx,
             format!("rect_{}_{}_{:?}", width, height, mode),
             &(|builder| {
-                builder.rectangle(mode, Rect::new(0., 0., width, height), WHITE);
+                builder.rectangle(mode, Rect::new(0., 0., width, height), WHITE)?;
                 Ok(())
             }),
         )
@@ -190,7 +187,7 @@ impl MeshHelper {
                     radius,
                     TOLERANCE,
                     WHITE,
-                );
+                )?;
                 Ok(())
             }),
         )
@@ -219,7 +216,7 @@ impl MeshHelper {
         let text = Text::new(TextFragment {
             text: text.to_string(),
             color: Some(color),
-            scale: Some(Scale::uniform(font_size)),
+            scale: Some(PxScale::from(font_size)),
             ..TextFragment::default()
         });
         let mut xy = position;
@@ -250,7 +247,7 @@ impl MeshHelper {
     }
 
     pub fn draw_mesh<D: Drawable>(&mut self, ctx: &mut Context, mesh: &D, xy: Point) {
-        graphics::draw(ctx, mesh, (xy,)).expect("couldn't draw");
+        graphics::draw(ctx, mesh, (xy, )).expect("couldn't draw");
     }
 
     pub fn draw_coloured_mesh<D: Drawable>(

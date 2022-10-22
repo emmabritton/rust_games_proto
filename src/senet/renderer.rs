@@ -7,7 +7,7 @@ use crate::constants::Direction;
 use crate::senet::rules::{HOUSE_BEAUTY, HOUSE_HAPPINESS, HOUSE_REBIRTH, HOUSE_WATER};
 use crate::senet::{Move, Square, State};
 use crate::system::letter_mesh::make_letter_mesh;
-use crate::system::math::{pt, Offset, OffsetTuple, Point};
+use crate::system::math::{Offset, OffsetTuple, Point, pt};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::TurnState::{SelectingMove, SelectingPiece};
 use ggez::graphics::DrawMode;

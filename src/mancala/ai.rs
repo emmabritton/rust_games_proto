@@ -49,7 +49,7 @@ pub(super) fn process(state: &mut State) {
         .collect();
     let computer_square = state.board.home_idx_to_square(
         Player::Computer,
-        valid_squares[thread_rng().gen_range(0, valid_squares.len())],
+        valid_squares[thread_rng().gen_range(0.. valid_squares.len())],
     );
     state.computer_cursor = state.board.square_to_idx(&computer_square);
     debug_log!("Going with random move from {}", state.computer_cursor);

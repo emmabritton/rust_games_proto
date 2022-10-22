@@ -1,7 +1,7 @@
 use crate::constants::colors::{BLUE, LIGHT_BLUE};
 use crate::mancala::Hole::End;
 use crate::mancala::{Hole, Square, State};
-use crate::system::math::{pt, Offset, Point};
+use crate::system::math::{pt, Point, Offset};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::Player;
 use crate::system::TurnState::{Animating, SelectingPiece};

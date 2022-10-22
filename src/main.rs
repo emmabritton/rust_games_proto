@@ -6,7 +6,7 @@ extern crate lazy_static;
 #[macro_use]
 extern crate variantly;
 
-use crate::args::args_matches;
+use crate::args::{ARG_GAME, ARG_RULES, ARG_TEST, args_matches};
 use crate::constants::games::TEST_MENU;
 use crate::menu::print_rules;
 use crate::system::game_system::GameSystem;
@@ -14,6 +14,7 @@ use ggez::conf::{WindowMode, WindowSetup};
 use ggez::{event, graphics, ContextBuilder};
 use std::env;
 use std::path::PathBuf;
+use ggez::event::KeyCode::P;
 
 const SCREEN_WIDTH: f32 = 1280.;
 const SCREEN_HEIGHT: f32 = 1024.;
@@ -49,32 +50,30 @@ fn main() {
     debug_log!("Games starting...");
     let matches = args_matches();
 
-    if matches.is_present("rules") {
+    if let Some(true) =  matches.get_one(ARG_RULES) {
         debug_log!("Rules only");
-        let game = matches.value_of("game").unwrap();
-        print_rules(game);
+        let game: &String = matches.get_one(ARG_GAME).unwrap();
+        print_rules(&game);
     } else {
-        let (ctx, event_loop) = &mut setup_ggez()
+        let (mut ctx, event_loop) = setup_ggez()
             .build()
             .expect("Could not create ggez context!");
 
-        let mut system = GameSystem::new(ctx);
+        let mut system = GameSystem::new(&mut ctx);
 
         debug_log!("Games started");
 
-        if matches.is_present("graphicstest") {
+        if let Some(true) = matches.get_one(ARG_TEST) {
             system.start_game(TEST_MENU);
-        } else if matches.value_of("game").is_some() {
-            let game = matches.value_of("game").unwrap();
-            debug_log!("Game specified from args: {}", game);
-            graphics::set_window_title(ctx, game);
-            system.start_game(game);
+        } else {
+            if let Some(game) = matches.get_one::<&String>(ARG_GAME) {
+                debug_log!("Game specified from args: {}", game);
+                graphics::set_window_title(&ctx, game);
+                system.start_game(game);
+            }
         }
 
-        match event::run(ctx, event_loop, &mut system) {
-            Ok(_) => println!("Exited cleanly"),
-            Err(e) => println!("Error occurred: {}", e),
-        }
+        event::run(ctx, event_loop,  system)
     }
 }
 
@@ -97,7 +96,7 @@ fn setup_ggez() -> ContextBuilder {
         //        println!("Adding path {:?} from manifest", path);
         cb = cb.add_resource_path(path);
     } else {
-        PathBuf::from("./resources");
+        cb = cb.add_resource_path(PathBuf::from("./resources"));
     }
 
     cb

@@ -1,6 +1,6 @@
 use crate::boards::idx_coord::BoardCoord;
 use crate::boards::{board_cols, board_rows};
-use crate::constants::colors::{BLUE, DARK_BLUE, LIGHT_BLUE};
+use crate::constants::colors::{BLUE, LIGHT_BLUE};
 use crate::constants::Direction;
 use crate::system::ggez_ext::keycode_to_direction;
 use crate::system::math::{Offset, OffsetTuple, Point};

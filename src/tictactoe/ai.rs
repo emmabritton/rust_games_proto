@@ -17,7 +17,7 @@ pub(super) fn process(state: &mut State) {
 
     debug_log!("{} empty squares: {:?}", empty_squares.len(), empty_squares);
 
-    let square = empty_squares[thread_rng().gen_range(0, empty_squares.len())];
+    let square = empty_squares[thread_rng().gen_range(0.. empty_squares.len())];
 
     debug_log!("Selected {}", square);
 

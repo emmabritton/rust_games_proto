@@ -6,7 +6,7 @@ use crate::constants::colors::{
 use crate::draughts::moves::Move::*;
 use crate::draughts::{board_index_to_pdn_num, Square, State};
 use crate::system::letter_mesh::make_letter_mesh;
-use crate::system::math::{pt, Offset, OffsetTuple, Point};
+use crate::system::math::{pt, Point, Offset, OffsetTuple};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::TurnState::{SelectingMove, SelectingPiece};
 use ggez::graphics::{Color, DrawMode, Mesh};

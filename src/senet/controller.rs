@@ -79,7 +79,7 @@ impl Controller {
     }
 
     fn roll(&mut self, player: Player) {
-        let sticks = thread_rng().gen_range(0, MAX_STICKS_UP + 1);
+        let sticks = thread_rng().gen_range(0 ..MAX_STICKS_UP + 1);
         self.state.roll = Some(if sticks == 0 { 5 } else { sticks });
         debug_log!("Rolled {}", self.state.roll.unwrap_or(0));
         self.update_moves(player);

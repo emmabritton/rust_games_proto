@@ -9,7 +9,7 @@ fn get_random_empty_square(board: &Board) -> usize {
         .enumerate()
         .filter_map(|(idx, square)| if square == &Empty { Some(idx) } else { None })
         .collect();
-    empties[thread_rng().gen_range(0, empties.len())]
+    empties[thread_rng().gen_range(0.. empties.len())]
 }
 
 pub(super) fn process(state: &mut State) {
@@ -32,7 +32,7 @@ pub(super) fn process(state: &mut State) {
                 )
             } else {
                 (
-                    neighbours[thread_rng().gen_range(0, neighbours.len())],
+                    neighbours[thread_rng().gen_range(0.. neighbours.len())],
                     state.board[state.cursor.idx].opposite().unwrap(),
                 )
             };
@@ -49,7 +49,7 @@ pub(super) fn process(state: &mut State) {
             let mut count = 0;
             let mut placed = false;
             loop {
-                let idx = already_placed[thread_rng().gen_range(0, already_placed.len())];
+                let idx = already_placed[thread_rng().gen_range(0.. already_placed.len())];
                 let neighbours: Vec<usize> = get_neighbours(idx, true, true)
                     .iter()
                     .filter(|&square| state.board[*square] == Empty)
@@ -57,7 +57,7 @@ pub(super) fn process(state: &mut State) {
                     .collect();
                 if !neighbours.is_empty() {
                     let square = state.board[idx];
-                    let idx = neighbours[thread_rng().gen_range(0, neighbours.len())];
+                    let idx = neighbours[thread_rng().gen_range(0.. neighbours.len())];
                     state.cursor.idx = idx;
                     state.move_cursor = square.into();
                     placed = true;

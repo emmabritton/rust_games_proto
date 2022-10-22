@@ -61,7 +61,7 @@ fn letter_mesh_o(builder: &mut MeshBuilder, width: f32, height: f32) -> GameResu
         radius,
         TOLERANCE,
         WHITE,
-    );
+    )?;
 
     Ok(())
 }
@@ -151,7 +151,7 @@ fn letter_mesh_q(builder: &mut MeshBuilder, width: f32, height: f32) -> GameResu
         radius,
         TOLERANCE,
         WHITE,
-    );
+    )?;
 
     builder.line(
         &[

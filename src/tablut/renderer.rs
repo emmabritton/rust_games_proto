@@ -4,7 +4,7 @@ use crate::constants::colors::{
     DARK_GRAY, DARK_GREEN, FAINT_BLUE, FAINT_RED, LIGHT_BLUE, LIGHT_GRAY, RED, WHITE,
 };
 use crate::system::letter_mesh::make_letter_mesh;
-use crate::system::math::{pt, Offset, OffsetTuple, Point};
+use crate::system::math::{pt, Point, Offset, OffsetTuple};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::PlayState::ModeSelection;
 use crate::system::TurnState::{SelectingMove, SelectingPiece};

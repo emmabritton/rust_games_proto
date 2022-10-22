@@ -1,14 +1,14 @@
+use ggez::mint::Point2;
 use crate::boards::idx_coord::BoardCoord;
 use crate::boards::is_in_board::IsInBoard;
-use ggez::nalgebra as na;
 
-pub type Point = na::Point2<f32>;
+pub type Point = Point2<f32>;
 
 pub fn pt(x: f32, y: f32) -> Point {
-    na::Point2::new(x, y)
+    Point2{x, y}
 }
 pub fn pt_usize(x: usize, y: usize) -> Point {
-    na::Point2::new(x as f32, y as f32)
+    Point2{x:x as f32,y: y as f32}
 }
 
 //Adds the difference between origin and mid to mid and returns it

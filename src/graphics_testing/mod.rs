@@ -1,7 +1,7 @@
 use crate::constants::colors::WHITE;
 use crate::constants::games::{TEST_COLORS, TEST_LETTERS};
 use crate::constants::Direction;
-use crate::system::math::{pt, Offset, WrappedUsize};
+use crate::system::math::{Offset, pt, WrappedUsize};
 use crate::system::mesh_helper::MeshHelper;
 use crate::system::{PlayState, Scene, NEW_TURN_HUMAN};
 use ggez::input::keyboard::KeyCode;
