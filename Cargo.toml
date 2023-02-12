@@ -2,13 +2,13 @@
 name = "games"
 version = "0.0.1"
 description = "Collection of tactical/strategic board games, created as a proof of concept not a releasable product"
-authors = ["Ray Britton <raybritton@pm.me>"]
+authors = ["Emma Britton <emmabritton@pm.me>"]
 edition = "2018"
 license = "MIT"
 publish = false
 readme = "README.md"
-homepage = "https://github.com/raybritton/rust_games"
-repository = "https://github.com/raybritton/rust_games"
+homepage = "https://github.com/emmabritton/rust_games"
+repository = "https://github.com/emmabritton/rust_games"
 
 [profile.release]
 lto = "fat"

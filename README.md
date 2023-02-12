@@ -61,6 +61,6 @@ OPTIONS:
 
 #### Screenshots
 
-![draughts screenshot](https://raw.githubusercontent.com/raybritton/rust_games_proto/master/screenshots/draughts.png)
-![draughts screenshot](https://raw.githubusercontent.com/raybritton/rust_games_proto/master/screenshots/mancala.png)
-![draughts screenshot](https://raw.githubusercontent.com/raybritton/rust_games_proto/master/screenshots/tablut.png)
+![draughts screenshot](https://raw.githubusercontent.com/emmabritton/rust_games_proto/master/screenshots/draughts.png)
+![draughts screenshot](https://raw.githubusercontent.com/emmabritton/rust_games_proto/master/screenshots/mancala.png)
+![draughts screenshot](https://raw.githubusercontent.com/emmabritton/rust_games_proto/master/screenshots/tablut.png)
